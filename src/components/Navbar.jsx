@@ -9,7 +9,9 @@ const Navbar = ({OrgName}) => {
     <div className='nav-bar'>
         {/* Logo */}
         <div className='logo-container'>
+          <a href='/'> 
           <img className="logo" src="https://i.postimg.cc/mr03ZRQH/Asset-16-4x.png" alt="Logo"/>
+          </a>
         </div>
         {/* Labels and Button */}
         <div className='utils'>

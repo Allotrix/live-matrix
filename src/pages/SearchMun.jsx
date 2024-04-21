@@ -81,14 +81,25 @@ const SearchMun = () => {
     <SearchBar onSearch={handleSearch}/>
     <FilterMUNS/>
     <section className='mun-container'>
-  {/*<ComCards comName={"UNGA"} comOccupancy={"23/500"}/>*/}
-  {filteredComs.map((com, index) => (
-          <MunCards key={index} logo={com.photoURL} comName={com.name} comOccupancy={com.committee} UID = {com.UID} onClick = {handleMUNCardClick}/>
-        ))}
-
-
-
+  {MUNS.length === 0 ? (
+    <div>
+      <p style={{ color: 'white' }}>No MUNS at the Moment</p>
+      </div>
+  ) : (
+    filteredComs.map((com, index) => (
+      <MunCards
+        key={index}
+        logo={com.photoURL}
+        comName={com.name}
+        comOccupancy={com.committee}
+        UID={com.UID}
+        onClick={handleMUNCardClick}
+      />
+    ))
+  )}
 </section>
+
+
     
   </>
     

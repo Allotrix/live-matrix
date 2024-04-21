@@ -1,13 +1,16 @@
 import {React,  useState } from 'react';
-import { FaSearch, FaTimes, FaHome } from 'react-icons/fa'; 
+import { FaSearch, FaTimes } from 'react-icons/fa'; 
+import { IoMdArrowRoundBack } from "react-icons/io";
 import "./SearchBar.css"
 import { useNavigate } from 'react-router-dom';
 
-const SearchBar = ({onSearch,}) => {
+const SearchBar = ({onSearch, LINK}) => {
   let navigate = useNavigate(); 
 
     const [searchQuery, setSearchQuery] = useState("")
+    const [curPage, setCurPage] = useState(LINK)
 
+   
 
     const handleInputChange = (event) => {
         const query = event.target.value;
@@ -22,7 +25,7 @@ const SearchBar = ({onSearch,}) => {
       }
 
       const handleBackBtn = ()=>{
-        navigate("/")
+        navigate(curPage)
         
 
       }
@@ -33,7 +36,7 @@ const SearchBar = ({onSearch,}) => {
     <div className='search-container'>
       <div className='back-btn-container'>
         <button className="back-btn" onClick={handleBackBtn} >
-        <FaHome/>
+        <IoMdArrowRoundBack/>
 
         </button>
       </div>

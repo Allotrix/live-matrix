@@ -11,7 +11,7 @@ const ComView = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [Committees, setCommittees] = useState([]);
 
-  const { munData, handleMUNClick } = useContext(MUNContext); 
+  const { munData, COMData, handleMUNClick, handleCOMClick } = useContext(MUNContext); 
   const UID = munData.UID
   
 
@@ -21,29 +21,34 @@ const ComView = () => {
         const snapshotOriginal = await get(ref(allotrixRealDb, `matrixData/${UID}/originalMatrix`));
   
         if (snapshotOriginal.exists()) {
-          console.log(snapshotOriginal.val()); 
   
           //  occupancy
-          let originalKeys = Object.keys(snapshotOriginal.val());
   
-          console.log("originalKeys:", originalKeys);
   
-          // Extract committee names from originalMatrix
           let com = [];
           snapshotOriginal.forEach((COM) => {
             let comName = COM.key;
             let size = 0;
-            Object.values(COM).forEach((node) => {
-              size += Object.keys(node).length;
+        
+            (COM).forEach((node) => {
+              
+                node.forEach((pertinencyArray) => {
+                    size += 1
+
+                });
+                
             });
+
             com.push({ comName, size });
-          });
+            size = 0
+        
+        });
+        
   
-          console.log("Committees:", com);
   
           setCommittees(com)  
         } else {
-          console.log("No data available");
+          console.error("No data available");
         }
       } catch (error) {
         console.error("Error checking matrix:", error);
@@ -55,6 +60,9 @@ const ComView = () => {
   
   
     
+  const handleCOMCardClick = (e) => {
+    handleCOMClick(e, "/comview/matrix");
+  };
   
 
 
@@ -69,17 +77,24 @@ const ComView = () => {
   return (
 <>
 <Navbar OrgName= {munData.comName} />
-<SearchBar onSearch={handleSearch}/>
+<SearchBar onSearch={handleSearch} LINK={"/"}/>
 
 <section className='com-container'>
-  {/*<ComCards comName={"UNGA"} comOccupancy={"23/500"}/>*/}
-  {filteredComs.map((com, index) => (
-          <ComCards key={index} comName={com.comName} comSize={com.size} />
-        ))}
-
-
-
+  {Committees.length === 0 ? (
+    <p style={{ color: 'white' }}>No committees either</p>
+  ) : (
+    filteredComs.map((com, index) => (
+      <ComCards
+        key={index}
+        comName={com.comName}
+        comSize={com.size}
+        UID={UID}
+        onClick={handleCOMCardClick}
+      />
+    ))
+  )}
 </section>
+
 
 </>  
 )

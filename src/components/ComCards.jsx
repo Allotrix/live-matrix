@@ -2,7 +2,11 @@ import React from 'react'
 
 import "./ComCards.css"
 
-const ComCards = ({comName, comSize}) => {
+const ComCards = ({comName, comSize, UID, onClick}) => {
+
+  const handleClick = () => {
+    onClick({ comName, UID });
+  };
   return (
     <div className='container'>
         <div className='card'>
@@ -12,7 +16,7 @@ const ComCards = ({comName, comSize}) => {
             <h2 className='com-occupancy'>
             Size: {comSize}
             </h2>
-            <button className='view-btn'>
+            <button onClick={handleClick} className='view-btn'>
             View
             </button>
         </div>

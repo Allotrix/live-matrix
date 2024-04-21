@@ -71,6 +71,6 @@
     background-color: transparent;
     font-size: 2em;
 }
-.back-btn:hover{
-   color:#242529;
+.back-btn:active{
+    transform: scale(0.95);
 }

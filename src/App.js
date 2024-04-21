@@ -14,7 +14,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<SearchMun />} />
           <Route path='/comview' element={<ComView />} />
-          <Route path='/matrix' element={<Matrix />} />
+          <Route path='/comview/matrix' element={<Matrix />} />
 
         </Routes>
         </MUNState>

@@ -7,10 +7,12 @@
 }
 
 .card{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
     align-items: center;
     flex-grow: 1;
-    justify-content: space-between;
+    justify-items: center; 
+    align-items: center;
     padding: 10px 16px;
     border: 2px solid #F5493F;
     border-radius: 12px;
@@ -22,12 +24,15 @@
     transform: scale(1.02);
     border: 2px solid white ;
 }
-
+.card:active{
+    transform: scale(.98);
+}
 .com-name{
     color: white;
+    width: 100%;
     display: flex;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-self: center;
 }
 
 .com-occupancy{
@@ -45,6 +50,8 @@
     border-radius: 12px;
     font-size: 1.3em;
     margin: 10px;
+    place-self: end;
+    align-self: center;
 }
 
 .view-btn:active{
@@ -55,12 +62,12 @@
   .img-container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     height: 55px;
-    width: 55px;
+    width: 100%;
 
   }
 .logo-img{
-    width: 100%;
+    width: auto;
     height: 100%;
 }
