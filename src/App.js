@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+import ComView from './pages/ComView'
+import Matrix from './pages/Matrix';
+import SearchMun from './pages/SearchMun';
+import MUNState from './contexts/MunState';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+            <MUNState>
+
+        <Routes>
+          <Route path='/' element={<SearchMun />} />
+          <Route path='/comview' element={<ComView />} />
+          <Route path='/matrix' element={<Matrix />} />
+
+        </Routes>
+        </MUNState>
+    </Router>
+  )
 }
 
 export default App;

@@ -1,0 +1,15 @@
+.country-card{
+    background-color: #333438;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-card:hover{
+    border: 2px solid #EF4036;
+}
+
+.country-name{
+    color: white;
+}

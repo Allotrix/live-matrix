@@ -1,0 +1,66 @@
+.container{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border: 2px solid #F5493F;
+    border-radius: 12px;
+    color: white;
+    background-color: #232323;
+
+}
+.card:hover{
+    transform: scale(1.02);
+    border: 2px solid white ;
+}
+
+.com-name{
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.com-occupancy{
+    color: #6D6969;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.view-btn{
+    background-color: #F5493F;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 12px;
+    font-size: 1.3em;
+    margin: 10px;
+}
+
+.view-btn:active{
+    transform: scale(0.95);
+    background: #EF4036;
+  }
+
+  .img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 55px;
+
+  }
+.logo-img{
+    width: 100%;
+    height: 100%;
+}
