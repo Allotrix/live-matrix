@@ -2,10 +2,14 @@ import {React,  useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa'; 
 import { IoMdArrowRoundBack } from "react-icons/io";
 import "./SearchBar.css"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SearchBar = ({onSearch, LINK}) => {
   let navigate = useNavigate(); 
+  const location = useLocation();
+  const ComViewPage = location.pathname.startsWith('/comview');
+  const MatrixPage = location.pathname.startsWith('/comview/matrix');
+
 
     const [searchQuery, setSearchQuery] = useState("")
     const [curPage, setCurPage] = useState(LINK)
@@ -35,10 +39,7 @@ const SearchBar = ({onSearch, LINK}) => {
   return (
     <div className='search-container'>
       <div className='back-btn-container'>
-        <button className="back-btn" onClick={handleBackBtn} >
-        <IoMdArrowRoundBack/>
-
-        </button>
+       {(ComViewPage || MatrixPage) && <button className="back-btn" onClick={handleBackBtn} > <IoMdArrowRoundBack/> </button> } 
       </div>
         <div className='search-bar'>
         <div className='icon'>

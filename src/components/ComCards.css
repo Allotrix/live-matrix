@@ -25,9 +25,7 @@
     border: 2px solid white ;
 }
 
-.card:hover{
-    transform: scale(.95);
-}
+
 
 .com-name{
     color: white;

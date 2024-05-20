@@ -9,7 +9,7 @@ import MUNState from './contexts/MunState';
 const App = () => {
   return (
     <Router>
-            <MUNState>
+      <MUNState>
 
         <Routes>
           <Route path='/' element={<SearchMun />} />
@@ -17,7 +17,7 @@ const App = () => {
           <Route path='/comview/matrix' element={<Matrix />} />
 
         </Routes>
-        </MUNState>
+      </MUNState>
     </Router>
   )
 }

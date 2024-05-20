@@ -17,11 +17,13 @@
     width: auto;
 }
 
+
 .org-name{
     font-size: 1.7em;
+    color:white;
     font-weight: bold;
     
-}
+  }
 
 
 .utils{
@@ -63,3 +65,4 @@
 .acc-btn:hover{
    background-color: aliceblue;
 }
+
