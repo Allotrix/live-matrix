@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getDatabase } from "firebase/database";
+const { initializeApp } = await import('https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js');
+const { getFirestore } = await import('https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js');
+const { getDatabase } = await import('https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js');
 
 const firebaseConfig = {
   apiKey: "AIzaSyDcsQYNLXVwX43K3Ka0lhnNg3um05H9Gwg",
