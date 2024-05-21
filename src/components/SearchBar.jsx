@@ -15,7 +15,14 @@ const SearchBar = ({onSearch, LINK}) => {
     const [curPage, setCurPage] = useState(LINK)
 
    
-
+    let placeholderText;
+  if (MatrixPage) {
+    placeholderText = 'Search for countries...';
+  } else if (ComViewPage) {
+    placeholderText = 'Search for committees...';
+  } else {
+    placeholderText = 'Search for Committees...';
+  }
     const handleInputChange = (event) => {
         const query = event.target.value;
         setSearchQuery(query);
@@ -45,7 +52,7 @@ const SearchBar = ({onSearch, LINK}) => {
         <div className='icon'>
         <FaSearch />
       </div>
-      <input className='input-bar' type='text' placeholder='Search for Committees...' value={searchQuery} onChange={handleInputChange} />
+      <input className='input-bar' type='text' placeholder={placeholderText} value={searchQuery} onChange={handleInputChange} />
       <div className='clear-btn'>
         <button onClick={handleClearBtn}>
         <FaTimes />
