@@ -20,7 +20,7 @@ const Navbar = ({OrgName}) => {
         </div>
         {/* Labels and Button */}
         <div className='utils'>
-          <div className='org-name'>{OrgName || "Allotrix Live Matrix"}</div>
+          <div className='org-name'>{OrgName || "Live Country Matrix"}</div>
           <div className='utils-sub'> 
           <button className='acc-btn' style={{opacity: 0}}></button>
 
