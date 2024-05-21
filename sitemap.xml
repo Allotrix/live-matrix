@@ -5,28 +5,15 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://www.allotrix.com/</loc>
+  <loc>https://matrix.allotrix.com/</loc>
   <lastmod>2024-04-19T04:23:00+00:00</lastmod>
 </url>
 <url>
-  <loc>https://www.allotrix.com/updates</loc>  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
+  <loc>https://matrix.allotrix.com/comview</loc>  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
 </url>
 <url>
-  <loc>https://www.allotrix.com/faqs</loc> <lastmod>2024-04-19T04:23:00+00:00</lastmod>
+  <loc>https://matrix.allotrix.com/comview/matrix</loc> <lastmod>2024-04-19T04:23:00+00:00</lastmod>
 </url>
 
-<url>
-  <loc>https://www.allotrix.com/getallotrix</loc>
-  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
-</url>
-<url>
-  <loc>https://www.allotrix.com/getallotrix/download</loc>
-  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
-</url>
-<url>
-  <loc>https://www.allotrix.com/getallotrix/otherProducts</loc>  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
-</url>
-<url>
-  <loc>https://www.allotrix.com/contact</loc>  <lastmod>2024-04-19T04:23:00+00:00</lastmod>
-</url>
+
 </urlset>
