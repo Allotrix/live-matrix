@@ -4,8 +4,8 @@ import SearchBar from '../components/SearchBar'
 import ComCards from '../components/ComCards'
 import { MUNContext } from '../contexts/MunState'
 import "./ComView.css"
-import { allotrixRealDb } from '../utils/AppFirebase'
-import {get, ref } from "firebase/database"
+import { allotrixRealDb, get, ref } from '../utils/AppFirebase'
+
 
 const ComView = () => {
   const [searchQuery, setSearchQuery] = useState('');

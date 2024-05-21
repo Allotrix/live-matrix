@@ -2,8 +2,7 @@ import { React, useEffect, useState, useContext} from 'react'
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import FilterMUNS from '../components/FilterMUNS'
-import { allotrixRealDb } from '../utils/AppFirebase'
-import {ref,get, update} from "firebase/database"
+import { allotrixRealDb, ref,get, update} from '../utils/AppFirebase'
 import MunCards from '../components/munCards'
 import { MUNContext } from '../contexts/MunState'
 import "./SearchMun.css"

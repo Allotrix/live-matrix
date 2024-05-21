@@ -2,8 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar'
 import CountryCard from '../components/CountryCard'
-import { allotrixRealDb } from '../utils/AppFirebase'
-import {get, ref, onValue, off} from "firebase/database"
+import { allotrixRealDb, get, ref, onValue, off} from '../utils/AppFirebase'
 import { MUNContext } from '../contexts/MunState'
 
 import "./Matrix.css"
