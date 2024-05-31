@@ -12,10 +12,11 @@ const App = () => {
       <MUNState>
 
         <Routes>
-          <Route path='/' element={<SearchMun />} />
-          <Route path='/comview' element={<ComView />} />
-          <Route path='/comview/matrix' element={<Matrix />} />
-
+          
+        <Route path='/' element={<SearchMun />} />
+          <Route path='/:munCardName' element={<ComView />} />
+          <Route path='/:munCardName/:comCardName' element={<Matrix />} />
+          
         </Routes>
       </MUNState>
     </Router>

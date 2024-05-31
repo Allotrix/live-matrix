@@ -14,7 +14,6 @@ const SearchMun = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [MUNS, setMUNS] = useState([])
-  const [committeeCount, setCommitteeCount] = useState([])
   const { munData, handleMUNClick } = useContext(MUNContext); 
 
 
@@ -26,7 +25,7 @@ const SearchMun = () => {
   };
 
   const handleMUNCardClick = (e) => {
-    handleMUNClick(e, "/comview");
+    handleMUNClick(e,  `/${e.comName}`);
   };
   
   

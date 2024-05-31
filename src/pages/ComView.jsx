@@ -5,6 +5,7 @@ import ComCards from '../components/ComCards'
 import { MUNContext } from '../contexts/MunState'
 import "./ComView.css"
 import { allotrixRealDb, get, ref } from '../utils/AppFirebase'
+import { useParams } from 'react-router-dom'
 
 
 const ComView = () => {
@@ -12,6 +13,8 @@ const ComView = () => {
   const [Committees, setCommittees] = useState([]);
 
   const { munData, COMData, handleMUNClick, handleCOMClick } = useContext(MUNContext); 
+  const { munCardName } = useParams();
+
   const UID = munData.UID
   
 
@@ -61,7 +64,7 @@ const ComView = () => {
   
     
   const handleCOMCardClick = (e) => {
-    handleCOMClick(e, "/comview/matrix");
+    handleCOMClick(e, `/${munCardName}/${e.comName}`);
   };
   
 
