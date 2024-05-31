@@ -82,7 +82,7 @@ const SearchMun = () => {
     <section className='mun-container'>
   {MUNS.length === 0 ? (
     <div>
-      <p style={{ color: 'white' }}>No MUNS at the Moment</p>
+      <p style={{ color: 'white' }}>No Active MUNS at the Moment</p>
       </div>
   ) : (
     filteredComs.map((com, index) => (
