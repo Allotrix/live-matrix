@@ -20,9 +20,9 @@ const SearchBar = ({onSearch, LINK}) => {
    
     let placeholderText;
   if (MatrixPage) {
-    placeholderText = 'Search for countries...';
+    placeholderText = 'Search for Countries...';
   } else if (ComViewPage) {
-    placeholderText = 'Search for committees...';
+    placeholderText = 'Search for Committees...';
   } else {
     placeholderText = 'Search for Committees...';
   }

@@ -60,7 +60,6 @@ useEffect(() => {
         
       })
 
-        console.log("firasbse pinged")
         setCountries(finalMatrix)  
 
         } else {

@@ -1,12 +1,15 @@
 import React from 'react'
 import "./Navbar.css"
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 
 const Navbar = ({OrgName}) => {
   const location = useLocation();
-  const ComViewPage = location.pathname.startsWith('/comview');
-  const MatrixPage = location.pathname.startsWith('/comview/matrix');
+  const { munCardName, comCardName } = useParams();
+
+  const HomePage = location.pathname === '/';
+  const ComViewPage = `/${munCardName}`
+  const MatrixPage = `/${munCardName}/${comCardName}` 
 
   return (
     <>
@@ -24,7 +27,7 @@ const Navbar = ({OrgName}) => {
           <div className='utils-sub'> 
           <button className='acc-btn' style={{opacity: 0}}></button>
 
-          {(ComViewPage || MatrixPage) && <div className='status-btn'>Active Now</div>}
+          {(ComViewPage || MatrixPage) && (!HomePage) && <div className='status-btn'>Active Now</div>}
             
           </div>
          

@@ -6,6 +6,7 @@ import { allotrixRealDb, ref,get, update} from '../utils/AppFirebase'
 import MunCards from '../components/munCards'
 import { MUNContext } from '../contexts/MunState'
 import "./SearchMun.css"
+import { useLocation, useParams } from 'react-router-dom'
 
 
 
@@ -15,7 +16,9 @@ const SearchMun = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [MUNS, setMUNS] = useState([])
   const { munData, handleMUNClick } = useContext(MUNContext); 
+  const { munCardName } = useParams();
 
+  const location = useLocation();
 
 
 
@@ -37,14 +40,12 @@ const SearchMun = () => {
       const snapshot = await get(MatrixRef);
   
       if (snapshot.exists()) {
-          console.log(snapshot.val());
           let munNames = []
           snapshot.forEach((MUN)=>{
             let name = MUN.val().displayName.displayName
             let committee = Object.keys(MUN.val().originalMatrix).length;
             let photoURL = MUN.val().PhotoURL.photoURL
             let UID = MUN.key
-            console.log("UID", UID)
             munNames.push({photoURL, name, committee, UID})
           })
           setMUNS(munNames)

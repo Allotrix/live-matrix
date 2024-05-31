@@ -5,7 +5,7 @@ import ComCards from '../components/ComCards'
 import { MUNContext } from '../contexts/MunState'
 import "./ComView.css"
 import { allotrixRealDb, get, ref } from '../utils/AppFirebase'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 
 const ComView = () => {
@@ -16,6 +16,9 @@ const ComView = () => {
   const { munCardName } = useParams();
 
   const UID = munData.UID
+
+  const location = useLocation();
+  const comPage = location.pathname 
   
 
   useEffect(() => {
@@ -57,7 +60,7 @@ const ComView = () => {
         console.error("Error checking matrix:", error);
       }
     }
-  
+    
     getCommittees();
   }, []);
   

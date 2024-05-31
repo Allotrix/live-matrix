@@ -16,7 +16,6 @@ const MUNState = ({ children }) => {
   };
 
   const handleCOMClick =(e, link)=>{
-    console.log(e);
     setCOMData(e)
     navigate(link)
 
