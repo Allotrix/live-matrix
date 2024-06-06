@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FaArrowLeft, FaSearch } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
 import { SearchContext } from '../contexts/SearchContext';
@@ -11,6 +11,10 @@ const Header = () => {
 
   const location = useLocation();
   const path = location.pathname;
+
+  useEffect(() => {
+    setSearchTerm("");
+  }, [path]);
 
   return (
     <header className='flex flex-col gap-2 bg-[#313236] text-allotrix-text font-allotrix-font'>
