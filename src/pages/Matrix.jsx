@@ -1,106 +1,77 @@
-import React, { useEffect, useState, useContext } from 'react'
-import Navbar from '../components/Navbar'
-import SearchBar from '../components/SearchBar'
-import CountryCard from '../components/CountryCard'
-import { allotrixRealDb, get, ref, onValue, off} from '../utils/AppFirebase'
-import { MUNContext } from '../contexts/MunState'
-
-import "./Matrix.css"
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { MatrixContext } from '../contexts/MatrixContext';
+import { SearchContext } from '../contexts/SearchContext';
+import { LoaderContext } from '../contexts/LoaderContext';
+import Loader from '../components/Loader';
 
 const Matrix = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [countries, setCountries] = useState([])
-  const { munData, COMData, handleMUNClick, handleCOMClick } = useContext(MUNContext); 
 
-  const UID = COMData.UID
-  const comName = COMData.comName
+    const [countryMatrix, setCountryMatrix] = useState([]);
 
+    const params = useParams();
+    const { munName, committeeName } = params;
 
+    const { muns } = useContext(MatrixContext);
+    const { loading } = useContext(LoaderContext);
+    const { searchTerm } = useContext(SearchContext);
 
+    const [checkVacancy, setCheckVacancy] = useState(false);
 
+    useEffect(() => {
+        const selectedMUN = muns.find(mun => mun.name.toLowerCase() === munName.toLowerCase());
+        const parts = committeeName.split(" ");
+        parts[0] = parts[0].toUpperCase();
+        const committeeNameNew = parts.join(" ");
+        if (selectedMUN) {
+          const originalMatrix = Object.values(selectedMUN.committee[committeeNameNew]).flat();
+          const allotmentMatrix = Object.values(selectedMUN.allotments[committeeNameNew]).flat();
+          const finalMatrix = [];
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
+          originalMatrix.forEach((country) => {
+            allotmentMatrix.includes(country) ? finalMatrix.push({ country, vacant: true }) : finalMatrix.push({ country, vacant: false })
+          })
 
- /*let change = onValue(allotrixRealDb, (snapshot) => {
-    console.log("db changed")
-  });
-*/
-useEffect(() => {
-  const matrixRef = ref(allotrixRealDb, `matrixData/${UID}`);
-  const unsubscribe = onValue(matrixRef, async (snapshot) => {
-    if (snapshot.exists()) {
-      try {
-        const snapshotOriginal = await get(ref(allotrixRealDb, `matrixData/${UID}/originalMatrix/${comName}`));
-        const snapshotAllotment = await get(ref(allotrixRealDb, `matrixData/${UID}/allotmentMatrix/${comName}`));
-
-        if (snapshotOriginal.exists()) {
-  
-          //  occupancy
-  
-  
-          let ogMatrix = [];
-          let allotmentMatrix=[]
-          let finalMatrix = []
-          snapshotOriginal.forEach((COM) => {
-            (COM).forEach((node) => {
-                  ogMatrix.push(node.val());
-            });
-        });
-
-        snapshotAllotment.forEach((COM) => {
-          (COM).forEach((node) => {
-            allotmentMatrix.push(node.val());
-          });
-      });
-
-      ogMatrix.forEach((country)=>{
-        allotmentMatrix.includes(country)? finalMatrix.push({"country": country, "vacant":true}) : finalMatrix.push({"country": country, "vacant":false})
-        
-      })
-
-        setCountries(finalMatrix)  
-
-        } else {
-          console.error("No data available");
+          setCountryMatrix(finalMatrix);
         }
-      } catch (error) {
-        console.error("Error checking matrix:", error);
-      }
-    }
-  });
+    }, [munName, committeeName, muns]);
 
-  return () => {
-    // Detach the listener when the component unmounts
-    off(matrixRef);
-  };
-}, [UID, comName]);
+    const filteredCountries = searchTerm
+        ? countryMatrix.filter(country =>
+            country.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        : countryMatrix;
 
-  const filteredComs = countries.filter((com) => {
-    return com.country.toLowerCase().includes(searchQuery.toLowerCase())
-  });
-      
-  return (
-    <>
-    <Navbar OrgName={munData.comName +" / "+COMData.comName}/>
-    <SearchBar onSearch={handleSearch} LINK="/comview"/>
-
-    <section className='countries-container'>
-      <div className='grid-section'>
-      {filteredComs.map((element, index) => (
-        
-    
-          <CountryCard key={index} countryName= {element.country} vacant = {element.vacant} style={{ opacity: !element.vacant ? 0.35 : 1 }}/>
-    
-        ))}   
-      </div>
-   
-
-
-    </section>
-    </>
-  )
+    return (
+        <main className="flex flex-wrap justify-center gap-4 rounded-lg my-10 max-w-[85%] mx-auto text-allotrix-text font-allotrix-font">
+            {
+                loading && <Loader />
+            }
+            {
+                filteredCountries.map((matrix, index) => (
+                    <article onMouseEnter={() => setCheckVacancy(index)} onMouseLeave={() => setCheckVacancy(false)} key={index} className={`bg-[#313236] relative border-2 rounded-md py-8 min-w-full md:min-w-[370px] border-[#313236] hover:border-allotrix-std transition-all duration-100 ease-in ${!matrix.vacant && 'opacity-45'}`}>
+                        <h3 className='text-xl text-center'>
+                            {matrix.country}
+                        </h3>
+                        {
+                            checkVacancy === index && (
+                                <p className={`rounded-xl border-2 ${matrix.vacant ? 'border-[green] bg-[green]' : 'border-allotrix-std bg-allotrix-std'}  px-5 py-[1px] text-[12px] absolute top-3 left-5`}>
+                                    {matrix.vacant ? <>Available</> : <>Taken</> }
+                                </p>
+                            )
+                        }
+                    </article>
+                ))
+            }
+            {
+                filteredCountries.length === 0 && !loading && (
+                    <h3 className='text-lg py-20 text-[#6D6969] text-center'>
+                        Countries of name <strong>"{searchTerm}"</strong> not found
+                    </h3>
+                )
+            }
+        </main>
+    )
 }
 
-export default Matrix
+export default Matrix;
