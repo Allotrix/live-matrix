@@ -37,8 +37,8 @@ const Matrix = () => {
     }, [munName, committeeName, muns]);
 
     const filteredCountries = searchTerm
-        ? countryMatrix.filter(country =>
-            country.toLowerCase().includes(searchTerm.toLowerCase())
+        ? countryMatrix.filter(matrix =>
+            matrix.country.toLowerCase().includes(searchTerm.toLowerCase())
         )
         : countryMatrix;
 
