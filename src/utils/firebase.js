@@ -1,16 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDymSv7NIZufePM27ZXVf97KDdwb9QxY8s",
-  authDomain: "mun-automator.firebaseapp.com",
-  databaseURL: "https://mun-automator-default-rtdb.firebaseio.com",
-  projectId: "mun-automator",
-  storageBucket: "mun-automator.appspot.com",
-  messagingSenderId: "536970944281",
-  appId: "1:536970944281:web:c82c6174ef9a816124af88",
-  measurementId: "G-B7EDJMNPHV"
+  apiKey: "AIzaSyDcsQYNLXVwX43K3Ka0lhnNg3um05H9Gwg",
+  authDomain: "allotrix-app.firebaseapp.com",
+  projectId: "allotrix-app",
+  storageBucket: "allotrix-app.appspot.com",
+  messagingSenderId: "248319517728",
+  appId: "1:248319517728:web:37c40e430bfb77ca1d0845",
+  measurementId: "G-MBLRD7XT00"
 };
 
 const app = initializeApp(firebaseConfig);
