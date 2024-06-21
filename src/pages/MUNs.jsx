@@ -18,7 +18,7 @@ const MUNs = () => {
     : muns;
 
     return (
-        <main className='my-10 font-allotrix-font max-w-[80%] mx-auto'>
+        <main className='my-10 font-allotrix-font max-w-[80%] mx-auto flex flex-col gap-3'>
             {
                 loading && <Loader />
             }
