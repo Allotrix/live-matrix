@@ -4,6 +4,7 @@ export const SearchContext = createContext();
 
 const SearchState = ({ children }) => {
 
+    // Global state management for the search bar
     const [searchTerm, setSearchTerm] = useState('')
 
     return (

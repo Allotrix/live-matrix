@@ -7,6 +7,7 @@ export const MatrixContext = createContext();
 
 const MatrixState = ({ children }) => {
 
+    // Consists of all active MUNs
     const [muns, setMuns] = useState([]);
 
     const { setLoading } = useContext(LoaderContext);
@@ -15,7 +16,8 @@ const MatrixState = ({ children }) => {
         fetchMUNS();
     }, []);
 
-    // Fetch all the currently active MUNs
+    // Fetch all the currently active MUNs from DB
+    // Consists of MUNS, Committees respective to each MUN, Countries respective to each committee in each MUN
     const fetchMUNS = async () => {
         try {
             setLoading(true);

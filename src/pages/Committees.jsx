@@ -8,7 +8,10 @@ import Loader from '../components/Loader';
 
 const Committees = () => {
 
+    // 
     const [committees, setCommittees] = useState([]);
+
+    // Dynamically pulling the committee data of the selected MUN from params
     const params = useParams();
     const { munName } = params;
 
@@ -28,6 +31,7 @@ const Committees = () => {
         }
     }, [munName, muns]);
 
+    // Applying search method
     const filteredCommittees = searchTerm 
     ? committees.filter(committee=>
         committee.name.toLowerCase().includes(searchTerm.toLowerCase())

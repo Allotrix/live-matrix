@@ -4,6 +4,7 @@ export const LoaderContext = createContext();
 
 const LoaderState = ({ children }) => {
 
+    // Managing the state of loaders
     const [loading, setLoading] = useState(false);
 
     return (

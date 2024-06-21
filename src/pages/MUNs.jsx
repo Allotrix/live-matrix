@@ -11,6 +11,7 @@ const MUNs = () => {
     const { searchTerm } = useContext(SearchContext);
     const { loading } = useContext(LoaderContext);
 
+    // Applying Search Method
     const filteredMuns = searchTerm 
     ? muns.filter(mun => 
         mun.name.toLowerCase().includes(searchTerm.toLowerCase())
