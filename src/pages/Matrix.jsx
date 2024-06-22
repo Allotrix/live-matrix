@@ -49,17 +49,26 @@ const Matrix = () => {
             }
             {
                 filteredCountries.map((matrix, index) => (
-                    <article onMouseEnter={() => setCheckVacancy(index)} onMouseLeave={() => setCheckVacancy(false)} key={index} className={`bg-[#313236] relative border-2 rounded-md py-8 min-w-full md:min-w-[370px] border-[#313236] hover:border-allotrix-std transition-all duration-100 ease-in ${!matrix.vacant && 'opacity-45'}`}>
-                        <h3 className='text-xl text-center'>
-                            {matrix.country}
-                        </h3>
-                        {
-                            checkVacancy === index && (
-                                <p className={`rounded-xl border-2 ${matrix.vacant ? 'border-[green] bg-[green]' : 'border-allotrix-std bg-allotrix-std'}  px-5 py-[1px] text-[12px] absolute top-3 left-5`}>
-                                    {matrix.vacant ? <>Available</> : <>Taken</> }
-                                </p>
-                            )
-                        }
+                    <article 
+                    onMouseEnter={() => setCheckVacancy(index)} 
+                    onMouseLeave={() => setCheckVacancy(false)} 
+                    key={index} 
+                    className={`bg-[#313236] relative border-2 rounded-md py-8 md:px-4 px-2 min-w-full md:min-w-[370px] max-w-[370px] h-[100px] border-[#313236] hover:border-allotrix-std transition-all duration-100 ease-in ${!matrix.vacant && 'opacity-45'}`}
+                    >
+                    <h3 
+                        className='text-xl text-center overflow-hidden whitespace-nowrap text-ellipsis'
+                    >
+                        {matrix.country}
+                    </h3>
+                    {
+                        checkVacancy === index && (
+                        <p 
+                            className={`rounded-xl border-2 ${matrix.vacant ? 'border-[green] bg-[green]' : 'border-allotrix-std bg-allotrix-std'} px-5 py-[1px] text-[12px] absolute top-3 left-5`}
+                        >
+                            {matrix.vacant ? <>Available</> : <>Taken</> }
+                        </p>
+                        )
+                    }
                     </article>
                 ))
             }
