@@ -25,11 +25,10 @@ const MatrixState = ({ children }) => {
             const data = snapshot.val();
             const dataArray = Object.values(data).map((MUN) => ({
                 name: MUN.displayName?.displayName,
-                committee: MUN.originalMatrix,
-                allotments: MUN.allotmentMatrix,
+                committee: MUN?.originalMatrix,
+                allotments: MUN?.allotmentMatrix,
                 photoURL: MUN.PhotoURL?.photoURL,
             }));
-            console.log(dataArray);
             setLoading(false);
             setMuns(dataArray);
         } catch (error) {

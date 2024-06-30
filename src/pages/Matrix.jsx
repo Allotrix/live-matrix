@@ -25,7 +25,7 @@ const Matrix = () => {
         const committeeNameNew = parts.join(" ");
         if (selectedMUN) {
           const originalMatrix = Object.values(selectedMUN.committee[committeeNameNew]).flat();
-          const allotmentMatrix = Object.values(selectedMUN.allotments[committeeNameNew]).flat();
+          const allotmentMatrix = selectedMUN.allotments[committeeNameNew] !== undefined ? Object.values(selectedMUN.allotments[committeeNameNew]).flat() : [];
           const finalMatrix = [];
 
           originalMatrix.forEach((country) => {
